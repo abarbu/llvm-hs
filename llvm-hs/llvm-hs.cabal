@@ -116,7 +116,8 @@ library
     array >= 0.4.0.0,
     llvm-hs-pure == 15.0.*
   hs-source-dirs: src
-
+  extra-libraries:
+    llvm_15
   default-extensions:
     NoImplicitPrelude
     TupleSections
