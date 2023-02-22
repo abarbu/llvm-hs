@@ -83,13 +83,7 @@ getLLVMConfig confFlags = do
   return $ getProgramOutput verbosity program
 
 addToLdLibraryPath :: String -> IO ()
-addToLdLibraryPath path = do
-  let (ldLibraryPathVar, ldLibraryPathSep) =
-        case buildOS of
-          OSX -> ("DYLD_LIBRARY_PATH",":")
-          _ -> ("LD_LIBRARY_PATH",":")
-  v <- try $ getEnv ldLibraryPathVar :: IO (Either SomeException String)
-  setEnv ldLibraryPathVar (path ++ either (const "") (ldLibraryPathSep ++) v)
+addToLdLibraryPath path = pure ()
 
 addLLVMToLdLibraryPath :: ConfigFlags -> IO ()
 addLLVMToLdLibraryPath confFlags = do
